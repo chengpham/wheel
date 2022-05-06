@@ -1,0 +1,28 @@
+{
+  "name": "wheel-spinner",
+  "version": "1.0.0",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "local": "nodemon -r dotenv/config server.js"
+  },
+  "author": "cheng",
+  "license": "ISC",
+  "dependencies": {
+    "aws-sdk": "2.x",
+    "bcrypt": "^5.0.0",
+    "cookie-parser": "^1.4.5",
+    "ejs": "^3.1.5",
+    "express": "^4.17.1",
+    "knex": "^0.21.14",
+    "method-override": "^3.0.0",
+    "pg": "^8.5.1"
+  },
+  "devDependencies": {
+    "dotenv": "^8.2.0",
+    "nodemon": "^2.0.6",
+    "morgan": "^1.10.0"
+  },
+  "description": ""
+}

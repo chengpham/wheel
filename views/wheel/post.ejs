@@ -1,0 +1,21 @@
+<%- include('../partials/header') %>
+<div>
+    <% for (let wheels of wheel) { %>
+        <div class='card mb-4'>
+            <div class='card-body container-fluid'>
+                    <% if(wheels.image_url){ %>
+                        <img  class="round-circle-profile float-left" src="<%= wheels.image_url%>"> 
+                        <% } %>
+                        <span class="size-title"><%= wheels.group_name%></span> 
+                    <p class='card-test'> <%= wheels.members.split(/\,\s*|\s{2,}|[\n\r]/).join(', ') %> </p>
+                    <div>
+                        <a href='/wheel/<%= wheels.id %>' class='btn btn-outline-primary btn-block form-control'>Show Wheel</a><br>
+                        <span class='entries'>entries: <%= wheels.members.split(/\,\s*|\s{2,}|[\n\r]/).length %></span>
+                    </div>
+            </div>
+        </div>
+    <% } %>
+</div>
+
+
+<%- include('../partials/footer') %>

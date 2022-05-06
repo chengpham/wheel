@@ -1,0 +1,79 @@
+*{
+    font-size: 1.02em;
+}
+.round-circle-profile{
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+}
+#avatar{
+    border-radius:50%;
+    width: 38px;
+    height: 38px;
+}
+.button{
+    display: flex;
+    justify-content: flex-end;
+    padding-bottom: 20px;
+}
+.field-icon {
+    float: right;
+    padding-right: 30px;
+    margin-top: -25px;
+    position: relative;
+    z-index: 2;
+}
+#mydiv{
+    display: none;
+}
+.size-title{
+    font-weight: bold;
+}
+.entries{
+    display: flex;
+    justify-content: flex-end;
+    font-style: italic;
+    font-size: 0.8em;
+    color: #BBB
+}
+.count{
+    display: flex;
+    justify-content: flex-end;
+    font-style: italic;
+    font-size: 0.6em;
+    color:#BBB;
+}
+#wheel{
+    max-width: 580px;
+    min-width: 369px;
+    text-align: center;
+}
+canvas{
+    width: 100%;
+}
+.qty{
+    max-width: 100px;
+}
+.navbar{
+    position: fixed !important;
+    width: 100%;
+    padding: 0px 3% 0px 3% !important;
+    z-index: 1;
+}
+.navbtn {
+    border: none;
+    margin-top: -5px;
+    background-color: #212529;
+}
+main{
+    position: relative;
+    padding-top: 70px;
+}
+.checkboxes{
+    display: flex;
+    justify-content: flex-end;
+    margin: 5px 0px -10px 0px;
+}
+.myform{
+    max-width: 450px !important;
+}

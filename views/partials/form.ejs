@@ -1,0 +1,67 @@
+
+<div class="row">
+    <div class='col'>
+        <div id="wheel" class='container'>
+            <h4>CLICK THE WHEEL TO SPIN</h4>
+            <canvas id="canvas" width="611" height="600"></canvas>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.3.2/dist/confetti.browser.min.js"></script>
+        <script type="text/javascript" src="/js/jquery_1_7_2.js"></script>
+        <script>  members = "<%= wheel.members?wheel.members:'' %>" </script>
+        <script type="text/javascript" src="/js/spin.js"></script>
+    </div>
+    <div class='col myform'>
+        <% if(username === wheel.username){ %>
+            <form action='/wheel/<%= wheel.id%>/edit' method='POST' class='form-group card'>
+            <input type='hidden' name='_method' value='PATCH'>
+        <% } %>
+        <% if (username && !wheel.id) { %>
+            <form action='/wheel/new' method="POST" class='form-group card'>
+        <% } %>
+        <% if(username && !wheel.id || username===wheel.username){ %>
+            <label for='group_name'>Group Name</label>
+            <input type='text' name='group_name' placeholder='Company Name' class='form-control'  autocomplete="off"  autocapitalize="off" spellcheck="false" value="<%= wheel.group_name? wheel.group_name: '' %>" required>
+            <label for='image_url'>Group Logo</label>
+            <input type='text' name='image_url' placeholder='https://i.imgur.com/qM6KaEy.jpeg' class='form-control' autocomplete="off"  autocapitalize="off" spellcheck="false" value="<%= wheel.image_url? wheel.image_url: '' %>">
+        <% } %>
+            <label for='members'>Members</label>
+            <textarea type="text" name='members' placeholder="Member names here" class="form-control"  rows='8' autocomplete="off"  autocapitalize="off" spellcheck="false" id='members' required><%= wheel.members?wheel.members.split(/\,\s*|\s{2,}|[\n\r]/).join(', '):'' %></textarea>
+            <p class='entries'> entries: <span id='entries'></span></p>
+            <div class="input-group after-add-more ">
+                <input type="text" class="form-control name" placeholder="Name" /> x
+                <input type="number" class="form-control qty" placeholder="Qty" min='0'/>
+                <input type='button' class="btn btn-outline-secondary add-more btn-md" value="Add">
+            </div>
+        <% if(username && !wheel.id || username === wheel.username){ %>
+            <div class='checkboxes'>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="method"  value="public" <%= !wheel.is_private?'checked':false %>>
+                    <label class='form-check-label'> Public</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="method"  value="private" <%= wheel.is_private?'checked':false %> >
+                    <label class='form-check-label'> Private</label>
+                </div>
+            </div>
+        <% }%>
+            <br>
+            <div class='button'>
+                <input type='button' class="btn btn-outline-secondary sorting btn-md" value="Sort">
+                <input type='button' class="btn btn-outline-secondary shuffle btn-md" value="Shuffle">
+        <% if(username === wheel.username){ %>
+                <input type='submit' class='btn btn-outline-primary btn-md' value='Save'>
+        <% } %>
+        <% if (username && !wheel.id) { %>
+                <input type='submit' class='btn btn-outline-primary btn-md' value='Post'>
+        <% } %>
+            </form>
+        <% if(username === wheel.username){ %>
+            <form action='/wheel/<%= wheel.id %>/del' method='POST'>
+                <input type='hidden' name='_method' value='DELETE'>
+                <input type='submit' class='btn btn-outline-danger btn-md' value='Delete'>
+            </form> 
+        <% } %>
+            </div>
+    </div>
+</div>
+

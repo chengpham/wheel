@@ -1,0 +1,38 @@
+<%- include('./partials/header') %>
+
+    <% if(username){ %>
+        <h1> Already Signed in as <%= username %></h1>
+    <% } else { %>
+        <form action='/sign_in' method="POST" class='form-group card'>
+            <div class='form-control form-inline'>
+            <label for='email'>Email</label>
+            <input type="text" name='email' placeholder='Email' class="form-control" autocapitalize="off" spellcheck="false" minlength='4', maxlength='40' required>
+            <label for='password'>Password</label>
+            <input type="password" id="password-field" name='password' placeholder='Password' class="form-control" autocapitalize="off" spellcheck="false" minlength='8', maxlength='20' required>
+            <span toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password"></span><br>
+            <% if(user){ %>
+              <h6 style="color:red">incorrect username or password</h6>
+            <% } %>
+            <div class="container button">
+              <button type='submit' class='btn btn-outline-secondary'>Sign In</button>
+              <a href='/sign_up' class='btn btn-outline-secondary'>Register</a>
+            </div>
+        </div>
+        </form>
+    
+    <% } %>
+    
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script>
+$(".toggle-password").click(function() {
+$(this).toggleClass("fa-eye fa-eye-slash");
+var input = $($(this).attr("toggle"));
+if (input.attr("type") == "password") {
+  input.attr("type", "text");
+} else {
+  input.attr("type", "password");
+}
+});
+</script>
+
+<%- include('./partials/footer') %>
