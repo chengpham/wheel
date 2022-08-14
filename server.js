@@ -31,7 +31,7 @@ app.use((req, res, next) => {
 })
 
 app.get('/', (req,res)=>{
-    knex('counter').increment({count:1}).returning('count')
+    knex('counter').increment({count: 1}).returning('count')
         .then(count => res.render('index', {wheel: false, count: count} ))
 })
 app.get('/sign_in', (req,res)=>{

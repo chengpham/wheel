@@ -3,13 +3,13 @@ if (!process.env.DATABASE_URL) {
 }
 
 module.exports = {
-
   development: {
     client: 'pg',
     connection: {
+      host: process.env.HOST,
       database: process.env.DATABASE,
       user: process.env.USERNAME,
-      password: process.env.PASSWORD,
+      password: process.env.PASSWORD
     },
     migrations: {
       tableName: 'migrations',
@@ -19,28 +19,20 @@ module.exports = {
       directory: './db/seeds'
     }
   },
-
-  staging: {
-    client: 'pg',
-    connection: {
-      database: process.env.DATABASE_URL,
-    },
-    pool: {
-      min: 2,
-      max: 10
-    },
-    migrations: {
-      tableName: 'migrations'
-    }
-  },
-
   production: {
     client: 'pg',
-    connection: process.env.DATABASE_URL,
-    migrations: {
-        directory: './db/migrations',
+    connection: {
+      host: process.env.HOST,
+      database: process.env.DATABASE,
+      user: process.env.USERNAME,
+      password: process.env.PASSWORD
     },
-    seeds: { directory: './db/seeds' },
-}
-
+    migrations: {
+      tableName: 'migrations',
+      directory: './db/migrations'
+    },
+    seeds: { 
+      directory: './db/seeds'
+    }
+  }
 };
